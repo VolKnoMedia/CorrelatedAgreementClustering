@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "01c7bb9221fc08f16099c44b24786a06ea3b7d1f649669ea9c481c0f364315fd"
+            "sha256": "93a5907ebaec9696a5398227b8c6c3270456e0424dc9af36b3d75ed2397988ae"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -38,6 +38,10 @@
                 "sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32"
             ],
             "version": "==1.1.1"
+        },
+        "kmeanclusterapfel": {
+            "editable": true,
+            "path": "."
         },
         "mysql.connector": {
             "hashes": [
@@ -102,6 +106,10 @@
             ],
             "markers": "python_version < '3.8'",
             "version": "==3.10.0.0"
+        },
+        "verysimplemodule": {
+            "editable": true,
+            "path": "."
         },
         "zipp": {
             "hashes": [

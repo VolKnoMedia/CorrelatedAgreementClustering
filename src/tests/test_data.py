@@ -1,28 +1,28 @@
 import pytest
 import config
 
-from src.data import db 
+from src.data.db import DB 
 
 
 @pytest.fixture
 def dbItem():
-    return db.DB(config.host, config.user, config.password)
+    return DB(config.host, config.user, config.password)
 
 
 def test_wrongType():
     with pytest.raises(Exception):
-        aa = db.DB(1, 2, 3)
+        aa = DB(1, 2, 3)
 
 def test_wrongInfo():
     host = config.host
     user = ""
     password = ""
     with pytest.raises(Exception):
-        aa = db.DB(host, user, password)
+        aa = DB(host, user, password)
 
 def test_CorrectInfo():
 
-    aa = db.DB(config.host, config.user, config.password) 
+    aa = DB(config.host, config.user, config.password) 
     assert True
 
 def test_run(dbItem):
