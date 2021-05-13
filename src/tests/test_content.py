@@ -4,6 +4,7 @@ from src.data.content import Content
 import datetime
 import collections
 from typing import OrderedDict
+import numpy as np
 
 
 @pytest.fixture
@@ -27,4 +28,6 @@ def test_getIdx(content):
 def test_date(content):
     assert type(content.date_added) is datetime.datetime
 
-
+def test_content(content):
+    c = content.getScenes()
+    assert type(content.getResults()) is np.ndarray
