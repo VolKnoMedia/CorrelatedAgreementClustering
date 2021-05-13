@@ -3,7 +3,6 @@ import collections
 import bisect
 import json
 import ast
-import numpy as np
 
 
 class Content(Meta):
@@ -25,8 +24,8 @@ class Content(Meta):
 
     data = []
     for i in res:
-        data.append(np.array([i[0], self.getSceneIdx(i[1]), i[2]]))
-    self.results = np.asarray(data)
+        data.append([i[0], self.getSceneIdx(i[1]), i[2]])
+    self.results = data
     return self.results
 
 

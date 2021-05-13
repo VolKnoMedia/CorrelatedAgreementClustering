@@ -4,7 +4,6 @@ from src.data.content import Content
 import datetime
 import collections
 from typing import OrderedDict
-import numpy as np
 
 
 @pytest.fixture
@@ -30,4 +29,4 @@ def test_date(content):
 
 def test_content(content):
     c = content.getScenes()
-    assert type(content.getResults()) is np.ndarray
+    assert type(content.getResults()) is list
