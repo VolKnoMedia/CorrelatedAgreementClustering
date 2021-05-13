@@ -26,7 +26,7 @@ class Content(Meta):
     data = []
     for i in res:
         data.append(np.array([i[0], self.getSceneIdx(i[1]), i[2]]))
-    self.results = np.asarray(data)
+    self.results = data
     return self.results
 
 
