@@ -31,8 +31,3 @@ def test_date(content):
 def test_content(content):
     c = content.getScenes()
     assert type(content.getResults()) is np.ndarray
-
-    #   data = []
-    # for i in res:
-    #     data.append(np.array([i[0], self.getSceneIdx(i[1]), i[2]]))
-    # return data
