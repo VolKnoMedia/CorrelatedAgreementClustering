@@ -26,7 +26,6 @@ class Content(Meta):
     data = []
     for i in res:
         data.append([i[0], self.getSceneIdx(i[1]), i[2]])
-    return data
 
 
   def getScenes(self):
