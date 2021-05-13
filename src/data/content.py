@@ -22,10 +22,7 @@ class Content(Meta):
     res = self.run(f"""SELECT user_id, media_time_secs, challenge_key 
                     FROM results 
                     WHERE code='{resultType}' AND media_item_id = {self.id};""")
-
-    data = []
-    for i in res:
-        data.append([i[0], self.getSceneIdx(i[1]), i[2]])
+    return res
 
 
   def getScenes(self):
