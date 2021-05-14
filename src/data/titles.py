@@ -51,7 +51,7 @@ class Titles(DB):
         pass
     return all
   
-  def getDataFrame(self, columns=['user','sceneIdx','emotion','dateAdded','title']):
+  def getDataFrame(self, columns=['user','sceneIdx','emotion','contentIdx','dateAdded','title']):
     data = self.getList()
     return pd.DataFrame(data, columns=columns)
 
