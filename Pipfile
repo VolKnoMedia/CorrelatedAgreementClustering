@@ -8,6 +8,7 @@ name = "pypi"
 pytest = "*"
 kmeanclusterapfel = {editable = true, path = "."}
 numpy = "*"
+pandas = "*"
 
 [dev-packages]
 
