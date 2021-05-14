@@ -11,6 +11,7 @@ class Titles(DB):
     self.content = {}
 
   def getData(self):
+    self.getResponses()
     for i in self.content:
       try:
         self.content[i].getScenes()
