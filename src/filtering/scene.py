@@ -1,7 +1,6 @@
 import numpy as np
 
 
-
 class SceneHeuristic:
     def __init__(self, results):
         self.results = np.array(results)

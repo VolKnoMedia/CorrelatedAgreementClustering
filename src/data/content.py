@@ -1,4 +1,6 @@
 from src.data.meta import Meta
+from src.filtering.scene import SceneHeuristic
+
 import collections
 import bisect
 import json
@@ -17,16 +19,27 @@ class Content(Meta):
     self.date_added = raw[2]
     self.release_date = raw[3]
   
-  def getResults(self, resultType = 'EMOJI'):
+  def getResults(self, resultType = 'EMOJI', topScenes=False):
     res = self.run(f"""SELECT user_id, media_time_secs, challenge_key 
                     FROM results 
                     WHERE code='{resultType}' AND media_item_id = {self.id};""")
 
+
     data = []
     for i in res:
         data.append([i[0], self.getSceneIdx(i[1]), i[2]])
+
+    if topScenes:
+      new = []
+      top = SceneHeuristic(data).getTopScenes(topScenes)
+      for i in data:
+        if i[1] in top:
+          new.append(i)
+      data = new
+    
     self.results = data
     return self.results
+  
 
 
   def getScenes(self):

@@ -4,18 +4,19 @@ from src.data.db import DB
 import pandas as pd
 
 class Titles(DB):
-  def __init__(self, connector, category='movie'):
+  def __init__(self, connector, category='movie', topScenes='all'):
     super().__init__(connector['host'], connector['user'], connector['password'])
     self.connector = connector
     self.titles = self.getTitles(category)
     self.content = {}
+    self.top = topScenes if topScenes != 'all' else False
 
   def getData(self):
     self.getResponses()
     for i in self.content:
       try:
         self.content[i].getScenes()
-        self.content[i].getResults()
+        self.content[i].getResults(resultType='EMOJI', topScenes=self.top)
         print(i, end =" ") 
       except:
         print("error", i, end=' ')
