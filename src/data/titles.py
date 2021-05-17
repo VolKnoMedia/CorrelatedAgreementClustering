@@ -62,7 +62,8 @@ class Titles(DB):
     for title in self.titles:
       try:
         data = self.content[title].getRatings()
-        _titleMEta = [title]
+        genre = self.content[title].getGenre()
+        _titleMEta = [title, genre]
         for ratings in data:
           new = [*_titleMEta, *ratings]
           allData.append(new)
