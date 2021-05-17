@@ -56,7 +56,18 @@ class Titles(DB):
     data = self.getList()
     return pd.DataFrame(data, columns=columns)
 
-  
 
+  def getAllRatings(self):
+    allData = []
+    for title in self.titles:
+      try:
+        data = self.content[title].getRatings()
+        _titleMEta = [title]
+        for ratings in data:
+          new = [*_titleMEta, *ratings]
+          allData.append(new)
+      except: 
+        print("error", title, end=' ')
+    return allData
 
   
