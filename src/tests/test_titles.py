@@ -11,6 +11,11 @@ def titles():
                 "password":config.password }
     return Titles(connector,"movie")
 
+def test_ratings(titles):
+    titles.titles = [833, 829]
+    data = titles.getAllRatings()
+
+
 
 def test_titlelist(titles):
     assert type(titles.titles) is list

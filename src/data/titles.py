@@ -12,7 +12,6 @@ class Titles(DB):
     self.top = topScenes if topScenes != 'all' else False
 
   def getData(self):
-    self.getResponses()
     for i in self.content:
       try:
         self.content[i].getScenes()
@@ -58,6 +57,7 @@ class Titles(DB):
 
 
   def getAllRatings(self):
+    self.getResponses()
     allData = []
     for title in self.titles:
       try:
