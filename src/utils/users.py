@@ -10,8 +10,8 @@ import numpy as np
 
 
 class Users:
-  def __init__(self, df, users):
-    self.data = df.loc[df.user.isin(users), df.columns.intersection(['user','hash','emotion'])].to_numpy()
+  def __init__(self, df, users, columns = ['user','hash','emotion']):
+    self.data = df.loc[df.user.isin(users), df.columns.intersection(columns)].to_numpy()
     users = df.user.unique() if users == 'all' else users
     self.lookup = {ithUser:np.where(self.data == ithUser) for ithUser in users}
 
