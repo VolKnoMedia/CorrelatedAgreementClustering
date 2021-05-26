@@ -18,15 +18,9 @@ class Scores:
     for uid in self.users:
       if method == 'standard':
         user = self.users[uid]
-        userScore = self.standardUserScore(user, n=n)
+        userScore, Uscores = self.standardUserScore(user, n=n)
         user.score = userScore
-        scores[uid]= userScore
-        if debug:
-          print(uid, userScore)
-      elif method == 'binary':
-        user = self.users[uid]
-        userScore = self.standardUserScore(user, n=n, debug=False)
-        user.score = userScore
+        user.scores = Uscores
         scores[uid]= userScore
         if debug:
           print(uid, userScore)
@@ -66,7 +60,7 @@ class Scores:
       if debug:
         print('\t Avg: ', sum(score) / n)
       scores.append(sum(score) / n)
-    return sum(scores)
+    return sum(scores), scores 
 
 
   def uscore(self, _u, n=20, clust=0):
@@ -127,7 +121,7 @@ class Scores:
       else:
         return 0
     return sum(scs)
-    
+
   def _getY(self, scene,  debug=False):
     othersRespondToIth = self.globalScene[scene]
     rIdx = np.random.randint(low=0, high=othersRespondToIth.shape[1])

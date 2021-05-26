@@ -246,6 +246,11 @@ class K_Mean:
       
     return r
 
+  def load_weights(self, path):
+    pass
+
+  def save_weights(self, path):
+    pass
 
 
 def filterSceneCount(df, minScenes):

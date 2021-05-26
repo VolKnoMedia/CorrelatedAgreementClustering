@@ -11,6 +11,7 @@ class User:
     self.id = _userId
     self.struct = CStruct(_K, _emotions)
     self.score = 0
+    self.scores = []
     t = np.unique(self.emotions, return_counts=True)
     self.entropy = sum([(i / sum(t[1])) * math.log2((i / sum(t[1]))) for i in t[1]]) * -1
 
