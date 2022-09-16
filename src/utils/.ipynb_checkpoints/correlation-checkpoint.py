@@ -40,7 +40,6 @@ class CStruct:
   def reset(self):
     for i in self.vectors:
       i.reset()
-      
   def getProb(self):
     for i in self.vectors:
       i.getProb()

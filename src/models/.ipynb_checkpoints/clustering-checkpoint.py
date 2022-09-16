@@ -14,38 +14,34 @@ class K_Mean:
     self.M = self.emotions.shape[0]
     self.K = _K
     self.uniqueUsers = self.df.user.unique()
-    print('Find hashes')
+
     # create hash values for contents and scenes and assign as index
     self.df['hash'] = self.df.apply(lambda x: hash((x.sceneIdx, x.contentIdx)), axis=1)
-    print('Getting user info')
+
     userInfo = Users(self.df, self.uniqueUsers)
-    print('Getting scene info')
     self.globalScene = Scenes(self.df, self.uniqueUsers)
 
-    print('Establishing Users')
+
     self.users = {}
     for ithU in self.uniqueUsers:
       self.users[ithU] = User(self.K, self.emotions, userInfo[ithU], ithU)
     self.clusters = []
     self.uInClust = set()
-    print("Done Done")
-
+  
   def oneVeresusAll(self,epochs, n=40, multiplier=3):
-    print("Initializing Clusters")
     self.initializeClusters(n=n, multiplier=multiplier, debug=False)
-    print("Converging Clusters")
+    
     for i in range(epochs):
       self.cUsers(self.uniqueUsers, scenes='all')
       self.assignClusters(method='all', debug=False)
       self.updateCentroid2()
-      print(f'epoch {i}')
 
 
   def initializeClusters(self, n=40, multiplier=3, debug=False):
-    # get users w/lots of responses and high entropy. Get interesting users to start cluster
+    # get users w/lots of responses and high entropy
     usersRemain  = self.getKUsers_entropy(n, self.K * multiplier)
 
-    #get joint probability matrices for users
+    #get jp matrices for users
     self.calculate1vAll(usersRemain)
 
     #calculate the K most heterogeneous centers
@@ -177,7 +173,6 @@ class K_Mean:
   def updateCentroid(self, debug=False):
     for clust in self.clusters:
       clust.updateCentroid(self.users)
-      
   def updateCentroid2(self):
     for c1 in self.clusters:
       for c2 in self.clusters:
